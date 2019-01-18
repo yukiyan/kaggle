@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  jupyter:
+    image: jupyter/scipy-notebook:latest
+    container_name: scipy-notebook
+    user: root
+    environment:
+      NB_UID: 8888
+      NB_GID: 8888
+      GRANT_SUDO: "yes"
+    volumes:
+       - $PWD:/home/jovyan/work
+    ports:
+      - "8888:8888"
+    command: start.sh jupyter lab --NotebookApp.token=''
